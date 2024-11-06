@@ -47,12 +47,11 @@ public class UserService implements IUserService {
 
             User userExist = optionalUser.get();
 
-            userExist.setUserName(user.getUserName());
+
             userExist.setEmail(user.getEmail());
-            userExist.setFullName(user.getFullName());
+
             userExist.setPassword(user.getPassword());
-            userExist.setRoles(user.getRoles());
-            userExist.setPhoneNumber(user.getPhoneNumber());
+
 
             return this.userRepository.save(userExist);
 
