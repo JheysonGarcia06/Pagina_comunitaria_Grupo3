@@ -1,7 +1,6 @@
 package com.talentoTechGrupo3.redComunitaria.users.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -52,20 +51,16 @@ public abstract class User {
 
 
     @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
-    @JsonManagedReference
     List<Comment> comments;
 
 
     @OneToMany(mappedBy = "users" ,fetch = FetchType.LAZY)
-    @JsonManagedReference
     List<Publication> publications;
 
     @ManyToOne
-    @JsonManagedReference
     private City cities;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-    @JsonManagedReference
     private List<Reaction> reactions;
 
     @Transient
@@ -73,6 +68,7 @@ public abstract class User {
     public String getRole() {
         return this.getClass().getAnnotation(DiscriminatorValue.class).value();
     }
+
 
 }
 

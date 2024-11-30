@@ -4,4 +4,5 @@ import com.talentoTechGrupo3.redComunitaria.publications.entities.Entrepreneursh
 import org.springframework.data.repository.CrudRepository;
 
 public interface IEntrepreneurshipRepository extends CrudRepository<Entrepreneurship,Long> {
+
 }

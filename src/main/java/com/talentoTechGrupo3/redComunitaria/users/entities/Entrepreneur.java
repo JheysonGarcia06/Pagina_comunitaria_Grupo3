@@ -19,7 +19,6 @@ public class Entrepreneur extends User {
     private String experience;
     private String contact;
     private String fullName;
-
     @Enumerated(EnumType.STRING)
     private Specialty specialty;
 }

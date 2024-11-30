@@ -20,6 +20,7 @@ public class RequestEntrepreneurDTO {
     private String contact;
     private String fullName;
     private Specialty specialty;
+    private String roles;
     private Long cityId;
 
 }

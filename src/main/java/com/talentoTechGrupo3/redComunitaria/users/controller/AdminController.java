@@ -1,6 +1,8 @@
 package com.talentoTechGrupo3.redComunitaria.users.controller;
 
 import com.talentoTechGrupo3.redComunitaria.users.dto.dtoAdmin.RequestAdminDTO;
+import com.talentoTechGrupo3.redComunitaria.users.dto.dtoAdmin.RequestUpdateAdminDTO;
+import com.talentoTechGrupo3.redComunitaria.users.dto.dtoAdmin.ResponseAdminDTO;
 import com.talentoTechGrupo3.redComunitaria.users.entities.Admin;
 import com.talentoTechGrupo3.redComunitaria.users.services.impl.AdminService;
 import org.springframework.http.HttpStatus;
@@ -21,35 +23,36 @@ public class AdminController {
     }
 
     @PostMapping
-    public ResponseEntity<Admin> createAdmin(@RequestBody RequestAdminDTO requestAdminDTO){
+    public ResponseEntity<ResponseAdminDTO> createAdmin(@RequestBody RequestAdminDTO requestAdminDTO){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(this.adminService.createAdmin(requestAdminDTO));
     }
+
     @GetMapping
-    public ResponseEntity<List<Admin>> getAdminAll(){
+    public ResponseEntity<List<ResponseAdminDTO>> getAdminAll(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.adminService.findAll());
+                .body(this.adminService.findAllAdmin());
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Admin>> getAdminById(@PathVariable Long id){
+    public ResponseEntity<Optional<ResponseAdminDTO>> getAdminById(@PathVariable Long id){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.adminService.findById(id));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Admin> updateAdmin(@RequestBody RequestAdminDTO requestAdminDTO){
+    public ResponseEntity<ResponseAdminDTO> updateAdmin(@RequestBody RequestUpdateAdminDTO requestUpdateAdminDTO){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.adminService.updateAdmin(requestAdminDTO));
+                .body(this.adminService.updateAdmin(requestUpdateAdminDTO));
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Admin> deleteAdminById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteAdminById(@PathVariable Long id){
          this.adminService.deleteAdminById(id);
          return ResponseEntity
                  .status(HttpStatus.OK).build();

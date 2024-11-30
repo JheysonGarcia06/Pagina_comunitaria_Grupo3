@@ -1,9 +1,9 @@
 package com.talentoTechGrupo3.redComunitaria.comments.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.talentoTechGrupo3.redComunitaria.publications.entities.Publication;
 import com.talentoTechGrupo3.redComunitaria.reactions.entities.ReactionType;
+import com.talentoTechGrupo3.redComunitaria.reactions.entities.CommentReaction;
 import com.talentoTechGrupo3.redComunitaria.users.entities.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,17 +29,12 @@ public class Comment  {
 
     private String content;
 
-    @Enumerated(EnumType.STRING)
-    private ReactionType reactionType;
-
-    @JsonIgnore
     @ManyToOne
     private User users;
 
-    @JsonIgnore
     @ManyToOne
     private Publication publication;
 
-    @OneToMany(mappedBy = "comment")
+    @OneToMany(mappedBy = "comment" ,cascade =CascadeType.REMOVE )
     private List<CommentReaction> commentReactions;
 }

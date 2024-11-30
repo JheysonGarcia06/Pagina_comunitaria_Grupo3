@@ -19,5 +19,6 @@ public class ResponseAdminDTO {
     private Integer accessLevel;
     private AreaOfResponsibility areaOfResponsibility;
     private Long cityId;
+    private String roles;
 
 }

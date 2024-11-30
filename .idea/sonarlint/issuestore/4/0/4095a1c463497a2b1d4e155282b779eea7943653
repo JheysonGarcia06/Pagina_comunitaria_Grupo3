@@ -1,13 +1,13 @@
 
-c	java:S112‚"FDefine and throw a dedicated exception instead of using a generic one.(úµ•‰8¹™¬¯2
-c	java:S112³"FDefine and throw a dedicated exception instead of using a generic one.(úµ•‰8¹™¬¯2
-c	java:S112¿"FDefine and throw a dedicated exception instead of using a generic one.(Àè«â8¹™¬¯2
+c	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(úµ•‰8¿ÙÊ³¶2
+c	java:S112·"FDefine and throw a dedicated exception instead of using a generic one.(úµ•‰8ÀÙÊ³¶2
+c	java:S112Ã"FDefine and throw a dedicated exception instead of using a generic one.(Àè«â8ÀÙÊ³¶2
 f
-java:S1192&"JDefine a constant instead of duplicating this literal "Not Found" 4 times.(’öÇ8º™¬¯2
+java:S1192&"JDefine a constant instead of duplicating this literal "Not Found" 4 times.(’öÇ8ÄÙÊ³¶2
 O
-java:S2789g"2Replace this null literal by an "Optional" object.(ÁÕ”ÿ8À™¬¯2
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄòéüÿÿÿÿ8Á™¬¯2
+java:S2789k"2Replace this null literal by an "Optional" object.(ÁÕ”ÿ8ÉÙÊ³¶2
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄòéüÿÿÿÿ8ÌÙÊ³¶2
 {
-java:S3655“"XCall "entrepreneur.isPresent()" or "!entrepreneur.isEmpty()" before accessing the value.(ˆõìÇşÿÿÿÿ8—§ÿ¯2
+java:S3655—"XCall "entrepreneur.isPresent()" or "!entrepreneur.isEmpty()" before accessing the value.(ˆõìÇşÿÿÿÿ8´ÚÊ³¶2
 …
-java:S1128"hRemove this unused import 'com.talentoTechGrupo3.redComunitaria.publications.entities.Entrepreneurship'.(Îë®±8¶§ÿ¯2
+java:S1128"hRemove this unused import 'com.talentoTechGrupo3.redComunitaria.publications.entities.Entrepreneurship'.(Îë®±8óòÚ³¶2

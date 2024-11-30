@@ -1,6 +1,6 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄòéüÿÿÿÿ8¡ˆÍ›¯2
-o
-java:S6204&"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8—‚µ°2
-x
-java:S1128"VRemove this unused import 'com.talentoTechGrupo3.redComunitaria.users.entities.Admin'.(ãÀšïıÿÿÿÿ8³‚µ°2
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄòéüÿÿÿÿ
+h
+java:S6204&"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹
+q
+java:S1128"VRemove this unused import 'com.talentoTechGrupo3.redComunitaria.users.entities.Admin'.(ãÀšïıÿÿÿÿ

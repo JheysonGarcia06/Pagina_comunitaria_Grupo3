@@ -1,6 +1,5 @@
 package com.talentoTechGrupo3.redComunitaria.users.services.impl;
 
-import com.talentoTechGrupo3.redComunitaria.publications.entities.Entrepreneurship;
 import com.talentoTechGrupo3.redComunitaria.users.dto.RequestEntrepreneurDTO;
 import com.talentoTechGrupo3.redComunitaria.users.entities.City;
 import com.talentoTechGrupo3.redComunitaria.users.entities.Entrepreneur;
@@ -8,6 +7,7 @@ import com.talentoTechGrupo3.redComunitaria.users.repositories.ICityRepository;
 import com.talentoTechGrupo3.redComunitaria.users.repositories.IEntrepreneurRepository;
 import com.talentoTechGrupo3.redComunitaria.users.services.IEntrepreneurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,12 +20,14 @@ public class EntrepreneurService implements IEntrepreneurService {
 
     private final IEntrepreneurRepository entrepreneurRepository;
     private final ICityRepository cityRepository;
+    private final PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public EntrepreneurService(IEntrepreneurRepository entrepreneurRepository, ICityRepository cityRepository) {
+    public EntrepreneurService(IEntrepreneurRepository entrepreneurRepository, ICityRepository cityRepository, PasswordEncoder passwordEncoder) {
         this.entrepreneurRepository = entrepreneurRepository;
         this.cityRepository = cityRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -40,7 +42,7 @@ public class EntrepreneurService implements IEntrepreneurService {
         Entrepreneur entrepreneur = new Entrepreneur();
         entrepreneur.setId(requestEntrepreneurDTO.getId());
         entrepreneur.setUsername(requestEntrepreneurDTO.getUsername());
-        entrepreneur.setPassword(requestEntrepreneurDTO.getPassword());
+        entrepreneur.setPassword(passwordEncoder.encode(requestEntrepreneurDTO.getPassword()));
         entrepreneur.setEmail(requestEntrepreneurDTO.getEmail());
         entrepreneur.setLocked(requestEntrepreneurDTO.getLocked());
         entrepreneur.setDisabled(requestEntrepreneurDTO.getDisabled());
@@ -64,7 +66,8 @@ public class EntrepreneurService implements IEntrepreneurService {
         responseDTO.setContact(entrepreneur.getContact());
         responseDTO.setFullName(entrepreneur.getFullName());
         responseDTO.setSpecialty(entrepreneur.getSpecialty());
-        responseDTO.setCityId(city.getId());
+        responseDTO.setRoles(entrepreneur.getRole());
+        responseDTO.setCityId(city.getIdCity());
 
         return responseDTO;
 
@@ -72,12 +75,14 @@ public class EntrepreneurService implements IEntrepreneurService {
 
     @Override
     public List<RequestEntrepreneurDTO> findAllEntrepreneur() {
+
         List<Entrepreneur>entrepreneurs = (List<Entrepreneur>) entrepreneurRepository.findAll();
+
         List<RequestEntrepreneurDTO>requestEntrepreneurDTOS = new ArrayList<>();
 
         for (Entrepreneur entrepreneur: entrepreneurs) {
 
-            Long cityId = (entrepreneur.getCities() != null) ? entrepreneur.getCities().getId() : null;
+            Long cityId = (entrepreneur.getCities() != null) ? entrepreneur.getCities().getIdCity() : null;
 
             requestEntrepreneurDTOS.add(new RequestEntrepreneurDTO(entrepreneur.getId(),
                     entrepreneur.getUsername(),
@@ -89,6 +94,7 @@ public class EntrepreneurService implements IEntrepreneurService {
                     entrepreneur.getContact(),
                     entrepreneur.getFullName(),
                     entrepreneur.getSpecialty(),
+                    entrepreneur.getRole(),
                     cityId ));
         }
 
@@ -106,7 +112,7 @@ public class EntrepreneurService implements IEntrepreneurService {
 
             Entrepreneur existEntrepreneur = optionalEntrepreneur.get();
 
-            Long cityId = (existEntrepreneur.getCities() != null) ? existEntrepreneur.getCities().getId() : null;
+            Long cityId = (existEntrepreneur.getCities() != null) ? existEntrepreneur.getCities().getIdCity() : null;
 
             RequestEntrepreneurDTO requestDTO = new RequestEntrepreneurDTO();
 
@@ -121,7 +127,7 @@ public class EntrepreneurService implements IEntrepreneurService {
             requestDTO.setUsername(existEntrepreneur.getUsername());
             requestDTO.setPassword(existEntrepreneur.getPassword());
             requestDTO.setExperience(existEntrepreneur.getExperience());
-
+            requestDTO.setRoles(existEntrepreneur.getRole());
             requestEntrepreneurDTO = Optional.of(requestDTO);
 
             return requestEntrepreneurDTO;
@@ -170,7 +176,7 @@ public class EntrepreneurService implements IEntrepreneurService {
                  responseDTO.setContact(entrepreneur.get().getContact());
                  responseDTO.setFullName(entrepreneur.get().getFullName());
                  responseDTO.setSpecialty(entrepreneur.get().getSpecialty());
-                 responseDTO.setCityId(city.getId());
+                 responseDTO.setCityId(city.getIdCity());
 
                  return responseDTO;
 

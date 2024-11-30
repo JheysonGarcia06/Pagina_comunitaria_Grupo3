@@ -35,19 +35,22 @@ public class EntrepreneurController {
                 .status(HttpStatus.CREATED)
                 .body(this.entrepreneurService.findAllEntrepreneur());
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<RequestEntrepreneurDTO>> getEntrepreneur(@PathVariable Long id){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.entrepreneurService.findByIdEntrepreneur(id));
     }
-    @PostMapping("/update")
+
+
+    @PutMapping("/update")
     public ResponseEntity<RequestEntrepreneurDTO> updateEntrepreneur(@RequestBody RequestEntrepreneurDTO requestEntrepreneurDTO){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.entrepreneurService.updateEntrepreneur(requestEntrepreneurDTO));
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteEntrepreneur(@PathVariable Long id){
         this.entrepreneurService.deleteEntrepreneurById(id);
         return ResponseEntity

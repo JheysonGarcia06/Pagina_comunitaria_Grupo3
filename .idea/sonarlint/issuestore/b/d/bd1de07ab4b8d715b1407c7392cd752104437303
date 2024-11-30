@@ -1,7 +1,7 @@
 
-b	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(¤Ôõ8õõ¿ş¯2
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄòéüÿÿÿÿ8øõ¿ş¯2
+b	java:S112P"FDefine and throw a dedicated exception instead of using a generic one.(¤Ôõ8˜‰µ¶2
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(àÄòéüÿÿÿÿ8”˜‰µ¶2
 o
-java:S6204A"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8Œö¿ş¯2
+java:S6204I"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8º˜‰µ¶2
 R
-java:S1068"0Remove this unused "objectMapper" private field.(“»‚Šûÿÿÿÿ8ö¿ş¯2
+java:S1068"0Remove this unused "objectMapper" private field.(“»‚Šûÿÿÿÿ8Ç˜‰µ¶2

@@ -1,5 +1,6 @@
 package com.talentoTechGrupo3.redComunitaria.publications.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.talentoTechGrupo3.redComunitaria.comments.entities.Comment;
@@ -12,17 +13,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-
-
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type_publication" // Este campo se debe incluir en el JSON
-)
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Entrepreneurship.class, name = "ENTREPRENEURSHIP"),
-        @JsonSubTypes.Type(value = Event.class, name = "EVENT")
-})
 
 @Entity
 @Table(name = "publications")
@@ -37,15 +27,15 @@ public abstract class Publication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-
-    @Enumerated(EnumType.STRING)
-    private ReactionType reactionType;
-
     @ManyToOne
     private User users;
-
     @OneToMany(mappedBy = "publication")
-    List<Comment>comments;
+    List<Comment> comments;
 
+    @Transient
+    @JsonProperty("typePublication")
+    public String typePublication() {
+        return this.getClass().getAnnotation(DiscriminatorValue.class).value();
+    }
 
 }

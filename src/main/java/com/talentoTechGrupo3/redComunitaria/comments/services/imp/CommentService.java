@@ -1,17 +1,18 @@
 package com.talentoTechGrupo3.redComunitaria.comments.services.imp;
 
-import com.talentoTechGrupo3.redComunitaria.comments.dto.CommentDTO;
+import com.talentoTechGrupo3.redComunitaria.comments.dto.RequestCommentDTO;
 import com.talentoTechGrupo3.redComunitaria.comments.entities.Comment;
 import com.talentoTechGrupo3.redComunitaria.publications.entities.Publication;
 import com.talentoTechGrupo3.redComunitaria.users.entities.User;
-import com.talentoTechGrupo3.redComunitaria.users.repositories.IAdminRepository;
 import com.talentoTechGrupo3.redComunitaria.comments.repository.ICommentRepository;
 import com.talentoTechGrupo3.redComunitaria.publications.repositories.IPublicationRepository;
 import com.talentoTechGrupo3.redComunitaria.users.repositories.IUserRepository;
 import com.talentoTechGrupo3.redComunitaria.comments.services.ICommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Service
@@ -20,18 +21,18 @@ public class CommentService implements ICommentService {
     private final ICommentRepository commentRepository;
     private final IUserRepository userRepository;
     private final IPublicationRepository publicationRepository;
-    private final IAdminRepository adminRepository;
 
-    public CommentService(ICommentRepository commentRepository, IUserRepository userRepository, IPublicationRepository publicationRepository, IAdminRepository adminRepository) {
+    @Autowired
+    public CommentService(ICommentRepository commentRepository, IUserRepository userRepository, IPublicationRepository publicationRepository) {
         this.commentRepository = commentRepository;
         this.userRepository = userRepository;
         this.publicationRepository = publicationRepository;
-        this.adminRepository = adminRepository;
+
     }
 
 
     @Override
-    public Comment createEntrepreneurComment(CommentDTO commentDTO) {
+    public Comment createEntrepreneurComment(RequestCommentDTO commentDTO) {
 
         Long userId = commentDTO.getUserId();
         User user = userRepository
@@ -52,6 +53,25 @@ public class CommentService implements ICommentService {
 
 
         return this.commentRepository.save(comment);
+    }
+
+    @Override
+    public List<Comment> findAllComment() {
+        return (List<Comment>) commentRepository.findAll();
+    }
+
+    @Override
+    public Comment findByComment(Long id) {
+        return commentRepository
+                .findById(id)
+                .orElseThrow(()-> new RuntimeException("Not Found"));
+    }
+
+    @Override
+    public String deleteCommentById(Long id) {
+           findByComment(id);
+           this.commentRepository.deleteById(id);
+       return "Comentario con id:" + id + "fue eliminado exitosamente";
     }
 }
 

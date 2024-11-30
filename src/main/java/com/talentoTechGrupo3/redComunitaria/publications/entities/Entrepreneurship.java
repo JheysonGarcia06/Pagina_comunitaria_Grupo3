@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 public class Entrepreneurship extends Publication {
 
 
+    @Column(name = "name_company")
     private String nameCompany;
     private LocalDateTime startDate;
     private Double receivedInvestment;

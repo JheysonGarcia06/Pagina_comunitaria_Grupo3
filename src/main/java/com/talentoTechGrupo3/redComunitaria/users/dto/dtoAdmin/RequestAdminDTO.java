@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RequestAdminDTO {
 
-    private Long id;
+
     private String username;
     private String password;
     private String email;
@@ -19,6 +19,7 @@ public class RequestAdminDTO {
     private Boolean disabled;
     private Integer accessLevel;
     private AreaOfResponsibility areaOfResponsibility;
+    private String role;
     private Long cityId;
 
 }
