@@ -31,7 +31,7 @@
   position: relative;
   margin: 15px 0;
 }
-.inputGroupInput {
+.inputGroupInput, #city,#speciality, .xp {
   font: inherit;
   color: var(--accent-color);
   padding: 10px;
@@ -41,7 +41,7 @@
   background-color: transparent;
   transition: outline-color 500ms;
 }
-.inputGroupInput:is(:focus, :valid) {
+.inputGroupInput:is(:focus, :valid),#city:is(:focus), #speciality:is(:focus) {
   outline-color: var(--secondary-color);
 }
 .inputGroupLabel {
@@ -55,10 +55,27 @@
 .inputGroupInput:focus + 
 .inputGroupLabel,
 .inputGroupInput:valid +
+.inputGroupLabel,
+#city:focus + 
+.inputGroupLabel,
+#city:valid +
+.inputGroupLabel,
+#speciality:focus + 
+.inputGroupLabel,
+#speciality:valid +
+.inputGroupLabel,
+.xp:focus + 
+.inputGroupLabel,
+.xp:valid +
 .inputGroupLabel {
   padding-inline: 5px;
   translate: 10px -14px;
   scale: 0.8;
   background-color: #e9ecef;
 }
+#city,#speciality, .xp {
+  padding: 10px;
+  margin: 5px 0;
+}
+
 /* Fin Animacion campos */
