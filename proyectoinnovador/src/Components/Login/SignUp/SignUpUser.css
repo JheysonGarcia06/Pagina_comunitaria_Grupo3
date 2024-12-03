@@ -27,11 +27,7 @@
 }
 
 /* Animacion campos */
-.inputGroup {
-  position: relative;
-  margin: 15px 0;
-}
-.inputGroupInput, #city,#speciality, .xp {
+#city,#speciality, .xp {
   font: inherit;
   color: var(--accent-color);
   padding: 10px;
@@ -41,21 +37,9 @@
   background-color: transparent;
   transition: outline-color 500ms;
 }
-.inputGroupInput:is(:focus, :valid),#city:is(:focus), #speciality:is(:focus), .xp:is(:focus) {
+#city:is(:focus), #speciality:is(:focus), .xp:is(:focus) {
   outline-color: var(--secondary-color);
 }
-.inputGroupLabel {
-  position: absolute;
-  top: 0;
-  left: 0;
-  translate: 10px 10px;
-  color: var(--accent-color);
-  transition: translate 500ms, scale 500ms;
-}
-.inputGroupInput:focus + 
-.inputGroupLabel,
-.inputGroupInput:valid +
-.inputGroupLabel,
 #city:focus + 
 .inputGroupLabel,
 #city:valid +
@@ -69,23 +53,9 @@
 .xp +
 .inputGroupLabel {
   padding-inline: 5px;
-  translate: 2px -14px;
+  translate: 10px -8px;
   scale: 0.8;
   background-color: #e9ecef;
-}
-#city:focus + 
-.inputGroupLabel,
-#city:valid +
-.inputGroupLabel,
-#speciality:focus + 
-.inputGroupLabel,
-#speciality:valid +
-.inputGroupLabel,
-.xp + 
-.inputGroupLabel,
-.xp +
-.inputGroupLabel {
-  translate: 10px -8px;
 }
 #city,#speciality, .xp {
   padding: 10px;
