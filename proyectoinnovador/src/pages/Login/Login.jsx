@@ -15,7 +15,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="container-fluid">
       <section>
         <h3>Welcome! Enter your email and password to continue</h3>
         <section>

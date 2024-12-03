@@ -41,24 +41,25 @@ const LoginForm = ({onLogin}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor={nameId}>Email</label>
-      </div>
-      <input type="email" id={nameId} name="email" required value={formData.email} onChange={handleChange}/>
-
-      <div>
-        <label htmlFor={passwordId}>Password</label>
-      </div>
-      <input type={logicPassword} id={passwordId} name="password" required value={formData.password} onChange={handleChange} />
-      <button type="button" onClick={showPassword}>
-        <FaEye />
-      </button>
-      <button type="submit">Login</button>
-      <div>
-        <Link to="/signup" >Sign up</Link>
-      </div>
-    </form>
+    <div className="container-fluid form-class">
+      <form onSubmit={handleSubmit}>
+        <div className="inputGroup">
+          <input className="inputGroupInput" type="email" id={nameId} name="email" required value={formData.email} onChange={handleChange}/>
+          <label className="inputGroupLabel" htmlFor={nameId}>Email</label>
+        </div>
+        <div className="inputGroup">
+          <input className="inputGroupInput" type={logicPassword} id={passwordId} name="password" required value={formData.password} onChange={handleChange} />
+          <label className="inputGroupLabel" htmlFor={passwordId}>Password</label>
+        </div>
+        <button type="button" onClick={showPassword}>
+          <FaEye />
+        </button>
+        <button type="submit">Login</button>
+        <div>
+          <Link to="/signup" >Sign up</Link>
+        </div>
+      </form>
+    </div>
   );
 };
 
