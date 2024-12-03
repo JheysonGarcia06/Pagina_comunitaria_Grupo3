@@ -41,7 +41,7 @@
   background-color: transparent;
   transition: outline-color 500ms;
 }
-.inputGroupInput:is(:focus, :valid),#city:is(:focus), #speciality:is(:focus) {
+.inputGroupInput:is(:focus, :valid),#city:is(:focus), #speciality:is(:focus), .xp:is(:focus) {
   outline-color: var(--secondary-color);
 }
 .inputGroupLabel {
@@ -64,18 +64,36 @@
 .inputGroupLabel,
 #speciality:valid +
 .inputGroupLabel,
-.xp:focus + 
+.xp + 
 .inputGroupLabel,
-.xp:valid +
+.xp +
 .inputGroupLabel {
   padding-inline: 5px;
-  translate: 10px -14px;
+  translate: 2px -14px;
   scale: 0.8;
   background-color: #e9ecef;
+}
+#city:focus + 
+.inputGroupLabel,
+#city:valid +
+.inputGroupLabel,
+#speciality:focus + 
+.inputGroupLabel,
+#speciality:valid +
+.inputGroupLabel,
+.xp + 
+.inputGroupLabel,
+.xp +
+.inputGroupLabel {
+  translate: 10px -8px;
 }
 #city,#speciality, .xp {
   padding: 10px;
   margin: 5px 0;
+}
+.xp::placeholder {
+  font: inherit;
+  color: var(--accent-color);
 }
 
 /* Fin Animacion campos */
